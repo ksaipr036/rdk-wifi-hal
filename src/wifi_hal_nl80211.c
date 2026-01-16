@@ -15381,7 +15381,9 @@ int wifi_drv_set_ap(void *priv, struct wpa_driver_ap_params *params)
 
 #if defined(NL80211_ACL) && !defined(PLATFORM_LINUX)
     //Raspberry Pi kernel requires patching to support ACL functionality.
+#if !defined(_PLATFORM_BANANAPI_R4_)
     nl80211_put_acl(msg, interface);
+#endif
 #endif
 
 #ifdef EAPOL_OVER_NL
